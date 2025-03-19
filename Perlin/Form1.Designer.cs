@@ -34,6 +34,10 @@
             txtSeed = new TextBox();
             label1 = new Label();
             btnRandomSeed = new Button();
+            txtWidth = new TextBox();
+            txtHeight = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pctBox).BeginInit();
             SuspendLayout();
             // 
@@ -82,11 +86,49 @@
             btnRandomSeed.UseVisualStyleBackColor = true;
             btnRandomSeed.Click += btnRandomSeed_Click;
             // 
+            // txtWidth
+            // 
+            txtWidth.Location = new Point(578, 336);
+            txtWidth.Name = "txtWidth";
+            txtWidth.Size = new Size(88, 23);
+            txtWidth.TabIndex = 5;
+            txtWidth.Text = "500";
+            // 
+            // txtHeight
+            // 
+            txtHeight.Location = new Point(691, 336);
+            txtHeight.Name = "txtHeight";
+            txtHeight.Size = new Size(93, 23);
+            txtHeight.TabIndex = 6;
+            txtHeight.Text = "500";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(534, 339);
+            label2.Name = "label2";
+            label2.Size = new Size(27, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Size";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(672, 339);
+            label3.Name = "label3";
+            label3.Size = new Size(13, 15);
+            label3.TabIndex = 8;
+            label3.Text = "x";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtHeight);
+            Controls.Add(txtWidth);
             Controls.Add(btnRandomSeed);
             Controls.Add(label1);
             Controls.Add(txtSeed);
@@ -107,5 +149,9 @@
         private TextBox txtSeed;
         private Label label1;
         private Button btnRandomSeed;
+        private TextBox txtWidth;
+        private TextBox txtHeight;
+        private Label label2;
+        private Label label3;
     }
 }
