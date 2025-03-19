@@ -7,12 +7,7 @@ namespace Perlin
             InitializeComponent();
         }
 
-        private void pctBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnStart_Click(object sender, EventArgs e)
+        private void GenTerrain()
         {
             Bitmap i = new Bitmap(500, 500);
 
@@ -23,7 +18,7 @@ namespace Perlin
             LayeredNoise forest = new LayeredNoise(5, seed + 10000);
 
             Random whiteNoiseGen = new(seed + 20000);
-            
+
             for (int x = 0; x < 300; x++)
             {
                 for (int y = 0; y < 300; y++)
@@ -67,14 +62,16 @@ namespace Perlin
 
                         if (value > 0.1 && value < 0.2 && forestValue > 0.07 && whiteNoise > 0.2)
                         {
-                            i.SetPixel(x, y, Color.FromArgb(255, 0, intv - (int) (60.0 * whiteNoise + 40.0 * forestValue), 0));
-                        } else {
-                            
+                            i.SetPixel(x, y, Color.FromArgb(255, 0, intv - (int)(60.0 * whiteNoise + 40.0 * forestValue), 0));
+                        }
+                        else
+                        {
+
 
                             i.SetPixel(x, y, Color.FromArgb(255, 0, intv, 0));
                         }
 
-                        
+
                     }
                 }
             }
@@ -115,42 +112,44 @@ namespace Perlin
                     {
                         y -= 1;
                         mY -= 1.0;
-                    } else if (lowest == down)
+                    }
+                    else if (lowest == down)
                     {
                         y += 1;
                         mY -= 1.0;
-                    } else if (lowest == left)
+                    }
+                    else if (lowest == left)
                     {
                         x -= 1;
                         mX += 1.0;
-                    } else
+                    }
+                    else
                     {
                         x += 1;
                         mX += 1.0;
                     }
-                    mX *= 0.9;
-                    mY *= 0.9;
+                    
 
-                    while (mX > 1.0 || mY > 1.0)
+                    while (mX >= 1.0 || mY >= 1.0)
                     {
                         i.SetPixel(x, y, Color.DarkBlue);
                         if (mX > 1.0)
                         {
                             x += 1;
-                            mX *= 0.7;
                         }
                         if (mY > 1.0)
                         {
                             y += 1;
-                            mY *= 0.7;
                         }
-                        if (x > 300 || y > 300 || x < 0 || y < 0)
+                        if (x > 300 || y > 300 || x < 0 || y < 0 || height < 0)
                         {
                             break;
                         }
+                        mX *= 0.9;
+                        mY *= 0.9;
                     }
 
-                    
+
 
                     height = noise.GetAt(x, y);
                 }
@@ -159,10 +158,21 @@ namespace Perlin
             pctBox.Image = i;
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            GenTerrain();
+        }
+
         private void btnRandomSeed_Click(object sender, EventArgs e)
         {
             Random r = new();
             txtSeed.Text = r.Next().ToString();
+            GenTerrain();
+        }
+
+        private void txtSeed_TextChanged(object sender, EventArgs e)
+        {
+            GenTerrain();
         }
     }
 }

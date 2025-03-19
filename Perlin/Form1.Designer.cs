@@ -44,7 +44,6 @@
             pctBox.Size = new Size(509, 426);
             pctBox.TabIndex = 0;
             pctBox.TabStop = false;
-            pctBox.Click += pctBox_Click;
             // 
             // btnStart
             // 
@@ -62,6 +61,7 @@
             txtSeed.Name = "txtSeed";
             txtSeed.Size = new Size(124, 23);
             txtSeed.TabIndex = 2;
+            txtSeed.TextChanged += txtSeed_TextChanged;
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             Controls.Add(btnStart);
             Controls.Add(pctBox);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Perlin";
             ((System.ComponentModel.ISupportInitialize)pctBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
